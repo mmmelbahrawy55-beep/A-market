@@ -1,0 +1,7 @@
+﻿
+# freebuff local data
+.freebuff/
+.cloud-attachments/
+
+# screenshots
+shots/

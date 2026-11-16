@@ -1,260 +1,1148 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A-market | منيو إلكتروني سريع</title>
-  <meta name="description" content="A-market سوبر ماركت - تصفح الأصناف والأسعار واطلب عبر الواتساب بضغطة زر.">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { cairo: ['Cairo', 'sans-serif'] },
-          colors: {
-            brand: { 50:'#fef2f2',100:'#fee2e2',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b' }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A-market | المنيو الإلكتروني — سوبر ماركت وتجزئة</title>
+<meta name="description" content="منيو A-market الإلكتروني: أكثر من 80 صنفاً في 10 أقسام، أسعار استرشادية وطلب فوري عبر واتساب." />
+<meta name="theme-color" content="#d61f26" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Cairo', 'system-ui', 'sans-serif'] },
+        colors: {
+          brand: {
+            50: '#fff1f2',
+            100: '#ffe2e3',
+            200: '#ffc7ca',
+            300: '#ffa1a6',
+            400: '#f97076',
+            500: '#ee1b24',
+            600: '#d61f26',
+            700: '#b3161c',
+            800: '#94161a',
+            900: '#7a171a'
           },
-          boxShadow: { soft: '0 10px 30px rgba(0,0,0,.06)' }
+          wa: { 500: '#25D366', 600: '#1ebe5b', 700: '#17994a' }
         }
       }
     }
-  </script>
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Cairo', sans-serif; }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  </style>
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { -webkit-font-smoothing: antialiased; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .card-in { animation: fadeUp .3s ease both; }
+  .cat-sticky { top: var(--header-h, 73px); }
+  .cat-sticky #catbar {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .card-in { animation: none; }
+  }
+</style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
-  <!-- Header -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
-      <a href="#home" class="flex items-center gap-2 shrink-0">
-        <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center font-extrabold text-lg shadow-soft">A</div>
-        <div class="leading-tight">
-          <div class="font-extrabold text-lg text-gray-900">A-market</div>
-          <div class="text-[11px] text-gray-500 -mt-0.5">سوبر ماركت وتجزئة</div>
-        </div>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+<!-- شريط إعلاني -->
+<div class="bg-brand-600 text-white">
+  <div class="mx-auto max-w-7xl px-4 py-2 text-center text-[11px] font-semibold tracking-wide sm:text-xs">
+    توصيل مجاني للطلبات فوق ٣٠٠ ج.م داخل نطاق الفرع · الطلب متاح حتى 12 منتصف الليل
+  </div>
+</div>
+
+<!-- الهيدر -->
+<header class="sticky top-0 z-40 border-b border-gray-100 bg-white/95 backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3">
+    <a href="#" class="flex items-center gap-2.5" aria-label="A-market — الصفحة الرئيسية">
+      <img src="assets/logo-mark.png" alt="شعار A-market" width="48" height="48" class="h-12 w-12 object-contain" />
+      <span class="leading-tight">
+        <span class="block text-lg font-extrabold tracking-tight text-gray-900">A-market</span>
+        <span class="block text-[10px] font-semibold text-gray-400">فرع العاشر من رمضان</span>
+      </span>
+    </a>
+
+    <div class="mr-auto hidden items-center gap-2 rounded-full bg-gray-50 px-3.5 py-2 text-xs font-semibold text-gray-600 sm:flex">
+      <svg class="h-4 w-4 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </svg>
+      <span>فرع العاشر من رمضان — الشرقية</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <a href="#/c/all" class="hidden rounded-full border border-gray-200 px-4 py-2 text-xs font-bold text-gray-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 md:inline-block">تصفح المنيو</a>
+      <button id="cart-open" type="button" aria-label="سلة الطلبات"
+              class="relative grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gray-200 bg-white text-gray-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L21 8H6" />
+          <circle cx="10" cy="20" r="1.2" /><circle cx="18" cy="20" r="1.2" />
+        </svg>
+        <span id="cart-badge" class="absolute -left-1 -top-1 hidden min-w-[18px] rounded-full bg-brand-600 px-1 text-center text-[10px] font-extrabold leading-[18px] text-white ring-2 ring-white">0</span>
+      </button>
+      <a id="header-wa" href="#" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 rounded-full bg-wa-500 px-3.5 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-wa-600 sm:px-4">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.65-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.62-.93-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.06 2.85 1.2 3.05c.15.2 2.08 3.32 5.04 4.53 2.95 1.2 2.95.8 3.48.75.53-.05 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.57-.35Z" />
+          <path d="M12.02 2C6.6 2 2.2 6.4 2.2 11.82c0 1.73.45 3.42 1.31 4.9L2 22l5.42-1.46a9.8 9.8 0 0 0 4.6 1.17h.01c5.42 0 9.82-4.4 9.82-9.82S17.44 2 12.02 2Zm0 17.94h-.01a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.06.83.82-3-.19-.31a8.1 8.1 0 0 1-1.24-4.32 8.12 8.12 0 0 1 8.12-8.11c2.17 0 4.2.85 5.74 2.38a8.07 8.07 0 0 1 2.38 5.74 8.12 8.12 0 0 1-8.13 8.1Z" />
+        </svg>
+        <span class="hidden sm:inline">واتساب الفرع</span>
       </a>
-      <div class="hidden sm:flex items-center gap-2 text-sm text-gray-600">
-        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100">
-          <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          الفروع: مدينة نصر • المعادي • التجمع
+    </div>
+  </div>
+</header>
+
+<!-- الهيرو -->
+<section id="hero" class="relative overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-50 via-white to-white"></div>
+  <div class="absolute -right-24 -top-28 -z-10 h-80 w-80 rounded-full bg-brand-100/70 blur-3xl"></div>
+  <div class="absolute -left-20 top-40 -z-10 h-64 w-64 rounded-full bg-amber-50 blur-3xl"></div>
+
+  <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-10 md:grid-cols-2 md:gap-14 md:py-14">
+    <div class="card-in">
+      <img src="assets/logo-full.png" alt="A-market — Enjoy Quality and Saving" width="440" height="346"
+           class="mb-4 h-24 w-auto object-contain md:h-28" />
+      <span class="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-3.5 py-1.5 text-[11px] font-extrabold text-brand-600 shadow-sm">
+        <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-500"></span>
+        فرع العاشر من رمضان · أسعار محدّثة اليوم
+      </span>
+
+      <h1 class="mt-4 text-[30px] font-black leading-[1.28] tracking-tight text-gray-900 sm:text-4xl md:text-[42px] md:leading-[1.25]">
+        كل احتياجات بيتك
+        <span class="relative inline-block text-brand-600">
+        بضغطة زر
+        <span class="absolute inset-x-0 -bottom-1 h-2 rounded-full bg-brand-100/80 -z-10"></span>
         </span>
-      </div>
-      <a id="waHeader" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition shadow-soft">
-        <svg class="w-5 h-5" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M19.11 17.2c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.62.14-.18.27-.71.88-.87 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.62-1.49-.85-2.04-.22-.53-.45-.46-.62-.47h-.53c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.99 2.65 1.13 2.83.14.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.57.58.66.21 1.26.18 1.74.11.53-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/><path d="M26.67 5.33A14.62 14.62 0 0016.02 1C7.97 1 1.42 7.55 1.42 15.6c0 2.57.67 5.08 1.95 7.29L1.3 31l8.3-2.02a14.53 14.53 0 006.42 1.5h.01c8.05 0 14.6-6.55 14.6-14.6 0-3.9-1.52-7.57-4.28-10.33zM16.03 28.1h-.01a12.1 12.1 0 01-6.17-1.69l-.44-.26-4.92 1.2 1.31-4.8-.29-.49a12.08 12.08 0 01-1.85-6.46c0-6.68 5.44-12.12 12.13-12.12 3.24 0 6.28 1.26 8.57 3.55a12.04 12.04 0 013.55 8.58c0 6.68-5.44 12.12-12.12 12.12z"/></svg>
-        تواصل واتساب
-      </a>
-    </div>
-    <div class="sm:hidden border-t border-gray-100 px-4 py-2 text-xs text-gray-600 text-center">الفروع: مدينة نصر • المعادي • التجمع الخامس</div>
-  </header>
+        وطلبها عبر واتساب
+      </h1>
 
-  <!-- Hero -->
-  <section id="home" class="bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-      <div class="max-w-3xl">
-        <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight text-gray-900 mb-4">A-market — سوبر ماركت وتجزئة</h1>
-        <p class="text-gray-600 text-base sm:text-lg mb-7 max-w-2xl">منيو إلكتروني سريع (Demo) لعرض الأصناف والأسعار وطلبها عبر الواتساب بضغطة زر.</p>
-        <div class="flex flex-col sm:flex-row gap-3">
-          <a href="#menu" class="inline-flex items-center justify-center bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3 rounded-xl transition shadow-sm">تصفح المنيو الآن</a>
-          <a id="waHero" href="#" target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition shadow-sm gap-2">
-            <svg class="w-5 h-5" viewBox="0 0 32 32" fill="currentColor"><path d="M19.11 17.2c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.62.14-.18.27-.71.88-.87 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.62-1.49-.85-2.04-.22-.53-.45-.46-.62-.47h-.53c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.99 2.65 1.13 2.83.14.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.57.58.66.21 1.26.18 1.74.11.53-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/><path d="M26.67 5.33A14.62 14.62 0 0016.02 1C7.97 1 1.42 7.55 1.42 15.6c0 2.57.67 5.08 1.95 7.29L1.3 31l8.3-2.02a14.53 14.53 0 006.42 1.5h.01c8.05 0 14.6-6.55 14.6-14.6 0-3.9-1.52-7.57-4.28-10.33zM16.03 28.1h-.01a12.1 12.1 0 01-6.17-1.69l-.44-.26-4.92 1.2 1.31-4.8-.29-.49a12.08 12.08 0 01-1.85-6.46c0-6.68 5.44-12.12 12.13-12.12 3.24 0 6.28 1.26 8.57 3.55a12.04 12.04 0 013.55 8.58c0 6.68-5.44 12.12-12.12 12.12z"/></svg>
-            اطلب عبر الواتساب
-          </a>
+      <p class="mt-4 max-w-lg text-sm leading-7 text-gray-500 sm:text-base sm:leading-8">
+        تصفح 80 صنفاً في 10 أقسام، افتح صفحة أي قسم واستعرض أصنافه، وأرسل طلبك جاهزاً على واتساب بضغطة زر.
+      </p>
+
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+        <a href="#/c/all" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-600 px-6 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700">
+        تصفح الأصناف
+        <svg class="h-4 w-4 rotate-180" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg>
+        </a>
+        <a id="hero-wa" href="#" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-6 py-3.5 text-sm font-extrabold text-gray-800 shadow-sm transition hover:-translate-y-0.5 hover:border-wa-500/40 hover:text-wa-700">
+          <svg class="h-5 w-5 text-wa-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.02 2C6.6 2 2.2 6.4 2.2 11.82c0 1.73.45 3.42 1.31 4.9L2 22l5.42-1.46a9.8 9.8 0 0 0 4.6 1.17h.01c5.42 0 9.82-4.4 9.82-9.82S17.44 2 12.02 2Zm0 17.94h-.01a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.06.83.82-3-.19-.31a8.1 8.1 0 0 1-1.24-4.32 8.12 8.12 0 0 1 8.12-8.11c2.17 0 4.2.85 5.74 2.38a8.07 8.07 0 0 1 2.38 5.74 8.12 8.12 0 0 1-8.13 8.1Z"/><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.65-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.62-.93-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.06 2.85 1.2 3.05c.15.2 2.08 3.32 5.04 4.53 2.95 1.2 2.95.8 3.48.75.53-.05 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.57-.35Z"/></svg>
+          تواصل معنا
+        </a>
+      </div>
+
+      <dl class="mt-8 grid max-w-md grid-cols-3 gap-3 border-t border-gray-100 pt-6">
+        <div>
+          <dt class="text-[11px] font-semibold text-gray-400">وقت التحضير</dt>
+          <dd class="mt-0.5 text-xl font-black text-gray-900">١٥ دقيقة</dd>
+        </div>
+        <div>
+          <dt class="text-[11px] font-semibold text-gray-400">أصناف المنيو</dt>
+          <dd class="mt-0.5 text-xl font-black text-gray-900"><span id="hero-count">80</span> صنف</dd>
+        </div>
+        <div>
+          <dt class="text-[11px] font-semibold text-gray-400">الأقسام</dt>
+          <dd class="mt-0.5 text-xl font-black text-gray-900"><span id="hero-cats">10</span> أقسام</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="relative card-in">
+      <div class="overflow-hidden rounded-[2rem] bg-gray-100 shadow-2xl shadow-gray-900/15 ring-1 ring-black/5">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1100&q=75"
+             alt="قسم الخضار والفواكه في A-market" loading="eager" decoding="async"
+             class="h-[280px] w-full object-cover sm:h-[360px] md:h-[430px]" />
+      </div>
+
+      <div class="absolute -bottom-4 right-4 left-4 flex items-center gap-3 rounded-2xl border border-gray-100 bg-white/95 px-4 py-3 shadow-xl backdrop-blur sm:right-6 sm:left-auto sm:w-72">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-lg">🛒</span>
+        <div class="leading-tight">
+          <p class="text-xs font-extrabold text-gray-900">طلبك جاهز على واتساب</p>
+          <p class="mt-0.5 text-[11px] font-semibold text-gray-500">الكود + الاسم + السعر في رسالة واحدة</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Menu / Search / Products -->
-  <section id="menu" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-5">
+<!-- الرئيسية: الأقسام + البحث -->
+<section id="view-home">
+  <div class="mx-auto max-w-7xl px-4 pb-16 pt-10 md:pt-12">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
       <div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900">الأصناف والمنتجات</h2>
-        <p class="text-gray-500 mt-1">ابحث عن الصنف أو اختر القسم، ثم اطلبه مباشرة عبر الواتساب.</p>
+        <div class="flex items-center gap-2 text-[11px] font-extrabold text-brand-600">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>
+          أقسام المنيو
+        </div>
+        <h2 class="mt-1.5 text-2xl font-black tracking-tight text-gray-900 sm:text-3xl">تصفح الأقسام</h2>
+        <p class="mt-1.5 text-sm text-gray-500">اختر قسمًا لتفتح صفحته وأصنافه، أو ابحث في كل المنيو فورًا.</p>
       </div>
-      <div class="w-full sm:w-96">
-        <label for="search" class="sr-only">ابحث عن صنف</label>
-        <div class="relative">
-          <span class="absolute inset-y-0 right-3 flex items-center text-gray-400">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"/></svg>
-          </span>
-          <input id="search" type="text" placeholder="ابحث عن أي صنف بالاسم..." class="w-full bg-white border border-gray-200 rounded-xl pr-10 pl-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 shadow-sm" autocomplete="off" />
+
+      <div class="relative w-full md:w-80">
+        <label for="search-home" class="sr-only">ابحث في كل الأصناف</label>
+        <svg class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m20 20-3.5-3.5"/>
+        </svg>
+        <input id="search-home" type="search" inputmode="search" autocomplete="off"
+               placeholder="ابحث في كل الأصناف… حليب، أرز"
+               class="w-full rounded-2xl border border-gray-200 bg-white py-3.5 pr-12 pl-11 text-sm font-semibold text-gray-800 shadow-sm outline-none transition placeholder:font-normal placeholder:text-gray-400 focus:border-brand-300 focus:ring-4 focus:ring-brand-100" />
+        <button id="clear-home" type="button" aria-label="مسح البحث"
+                class="absolute left-2.5 top-1/2 hidden -translate-y-1/2 rounded-full p-1.5 text-gray-400 transition hover:bg-gray-100 hover:text-gray-600">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="home-browse">
+      <div id="category-grid" class="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 xl:grid-cols-5"></div>
+
+      <div class="mt-7 flex flex-col items-start justify-between gap-3 rounded-2xl border border-gray-100 bg-white px-4 py-4 shadow-sm sm:flex-row sm:items-center">
+        <div class="flex items-center gap-3">
+          <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-lg">🧾</span>
+          <div class="leading-tight">
+            <p class="text-sm font-extrabold text-gray-900">تحب تشوف كل حاجة مرة واحدة؟</p>
+            <p class="mt-0.5 text-[11px] font-semibold text-gray-500">صفحة واحدة فيها الـ80 صنف مع نفس شريط الأقسام.</p>
+          </div>
+        </div>
+        <a href="#/c/all" class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-xs font-extrabold text-white transition hover:bg-brand-700">
+          عرض كل الأصناف
+          <svg class="h-4 w-4 rotate-180" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div id="home-results" class="mt-7 hidden">
+      <div class="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 pb-3">
+        <p id="home-results-label" class="text-xs font-bold text-gray-500"></p>
+        <p class="text-[11px] font-semibold text-gray-400">الأسعار بالجنيه المصري</p>
+      </div>
+      <div id="home-results-grid" class="grid grid-cols-2 gap-3.5 md:grid-cols-3 md:gap-5 xl:grid-cols-4"></div>
+      <div id="home-empty" class="hidden rounded-3xl border border-dashed border-gray-200 bg-white px-6 py-16 text-center">
+        <span class="text-4xl">🔍</span>
+        <p class="mt-3 text-base font-extrabold text-gray-900">لا يوجد صنف بهذا الاسم</p>
+        <p class="mt-1 text-sm text-gray-500">جرّب كلمة أبسط أو تصفح الأقسام.</p>
+        <button id="home-reset" type="button" class="mt-5 rounded-full bg-brand-600 px-5 py-2.5 text-xs font-extrabold text-white transition hover:bg-brand-700">عرض كل الأصناف</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- صفحة القسم -->
+<section id="view-cat" class="hidden">
+  <div class="mx-auto max-w-7xl px-4 pt-5">
+    <div class="relative overflow-hidden rounded-3xl bg-gray-900">
+      <img id="cat-banner" src="" alt="" class="absolute inset-0 h-full w-full object-cover opacity-45" />
+      <div class="absolute inset-0 bg-gradient-to-l from-gray-900/85 via-gray-900/55 to-gray-900/20"></div>
+      <div class="relative px-5 py-7 text-white md:px-8 md:py-9">
+        <nav class="flex flex-wrap items-center gap-1.5 text-[11px] font-bold text-white/70" aria-label="مسار التنقل">
+          <a href="#/" class="transition hover:text-white">الرئيسية</a>
+          <span class="text-white/40">/</span>
+          <a href="#/c/all" class="transition hover:text-white">الأقسام</a>
+          <span class="text-white/40">/</span>
+          <span id="cat-crumb" class="text-white"></span>
+        </nav>
+        <h1 id="cat-title" class="mt-2 text-2xl font-black tracking-tight md:text-[32px]"></h1>
+        <p id="cat-meta" class="mt-1 text-xs font-semibold text-white/75 md:text-sm"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- شريط التنقل بين الأقسام: أسهم + أقسام -->
+  <div class="cat-sticky sticky z-30 mt-4 border-y border-gray-100 bg-white/95 py-2.5 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center gap-2 px-4">
+      <button id="nav-prev" type="button" aria-label="القسم السابق"
+              class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gray-200 bg-white text-gray-500 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-600 disabled:cursor-not-allowed disabled:opacity-40">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+      <nav id="catbar" class="no-scrollbar flex flex-1 items-center gap-1.5 overflow-x-auto" aria-label="أقسام المنيو"></nav>
+
+      <button id="nav-next" type="button" aria-label="القسم التالي"
+              class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gray-200 bg-white text-gray-500 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-600 disabled:cursor-not-allowed disabled:opacity-40">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 pb-16 pt-5">
+    <div class="flex flex-col gap-4 border-b border-gray-100 pb-4 md:flex-row md:items-center md:justify-between">
+      <div class="relative w-full md:w-80">
+        <label for="search-cat" class="sr-only">ابحث داخل القسم</label>
+        <svg class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m20 20-3.5-3.5"/>
+        </svg>
+        <input id="search-cat" type="search" inputmode="search" autocomplete="off"
+               placeholder="ابحث داخل هذا القسم…"
+               class="w-full rounded-2xl border border-gray-200 bg-white py-3 pr-12 pl-11 text-sm font-semibold text-gray-800 shadow-sm outline-none transition placeholder:font-normal placeholder:text-gray-400 focus:border-brand-300 focus:ring-4 focus:ring-brand-100" />
+        <button id="clear-cat" type="button" aria-label="مسح البحث"
+                class="absolute left-2.5 top-1/2 hidden -translate-y-1/2 rounded-full p-1.5 text-gray-400 transition hover:bg-gray-100 hover:text-gray-600">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+
+      <p id="cat-count" class="text-xs font-bold text-gray-500"></p>
+    </div>
+
+    <div id="cat-grid" class="mt-5 grid grid-cols-2 gap-3.5 md:grid-cols-3 md:gap-5 xl:grid-cols-4"></div>
+
+    <div id="cat-empty" class="hidden rounded-3xl border border-dashed border-gray-200 bg-white px-6 py-16 text-center">
+      <span class="text-4xl">🔍</span>
+      <p class="mt-3 text-base font-extrabold text-gray-900">لا يوجد صنف بهذا الاسم في هذا القسم</p>
+      <p class="mt-1 text-sm text-gray-500">جرّب كلمة أبسط، أو انتقل لقسم آخر من الشريط بالأعلى.</p>
+      <button id="cat-reset" type="button" class="mt-5 rounded-full bg-brand-600 px-5 py-2.5 text-xs font-extrabold text-white transition hover:bg-brand-700">عرض كل أصناف القسم</button>
+    </div>
+  </div>
+</section>
+
+<!-- الفوتر -->
+<footer class="border-t border-gray-200 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-10">
+    <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-sm">
+        <img src="assets/logo-full.png" alt="A-market — Enjoy Quality and Saving" width="440" height="346" class="h-24 w-auto object-contain md:h-28" />
+        <p class="mt-4 text-xs leading-6 text-gray-500">
+          منيو إلكتروني سريع لعرض الأصناف والأسعار وطلبها عبر واتساب. هذه الصفحة عينة تجريبية (Demo) — الأسعار والصور استرشادية.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-8 text-xs sm:gap-14">
+        <div>
+          <p class="font-extrabold text-gray-900">الفرع</p>
+          <p class="mt-2 leading-6 text-gray-500">العاشر من رمضان — الشرقية</p>
+          <p class="mt-2 font-semibold text-gray-600">يومياً — 9 ص إلى 12 م</p>
+        </div>
+        <div>
+          <p class="font-extrabold text-gray-900">تواصل</p>
+          <a id="footer-wa" href="#" target="_blank" rel="noopener" class="mt-2 inline-block font-semibold text-wa-700 hover:underline" dir="ltr">0109 966 6000</a>
+          <p class="mt-2 font-semibold text-gray-600">A-market@demo.com</p>
         </div>
       </div>
     </div>
 
-    <!-- Category Tabs -->
-    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-2 mb-6" id="categoryTabs">
-      <button data-cat="all" class="cat-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold bg-brand-600 text-white shadow-sm">الكل</button>
-      <button data-cat="dairy" class="cat-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-brand-300">منتجات الألبان</button>
-      <button data-cat="grocery" class="cat-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-brand-300">البقالة الجافة</button>
-      <button data-cat="beverages" class="cat-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-brand-300">المشروبات</button>
-      <button data-cat="cleaning" class="cat-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-brand-300">المنظفات</button>
-      <button data-cat="produce" class="cat-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-brand-300">الخضار والفواكه</button>
+    <div class="mt-8 flex flex-col items-center justify-between gap-2 border-t border-gray-100 pt-5 text-[11px] font-semibold text-gray-400 sm:flex-row">
+      <p>© 2026 A-market — جميع الحقوق محفوظة.</p>
+      <p>Demo Landing Page &amp; Digital Menu</p>
     </div>
+  </div>
+</footer>
 
-    <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5"></div>
-    <div id="emptyState" class="hidden text-center py-16">
-      <div class="text-4xl mb-3">🔎</div>
-      <p class="text-gray-600 font-semibold">لا توجد نتائج مطابقة لبحثك</p>
-      <p class="text-gray-400 text-sm mt-1">جرّب كلمة مختلفة أو اختر قسمًا آخر</p>
-    </div>
-  </section>
+<!-- السلة -->
+<div id="cart-overlay" class="fixed inset-0 z-50 hidden">
+  <div id="cart-backdrop" class="absolute inset-0 bg-gray-900/50 backdrop-blur-sm"></div>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-600">
+  <aside id="cart-panel" class="absolute inset-y-0 left-0 flex w-full max-w-sm flex-col bg-white shadow-2xl" aria-label="سلة الطلبات">
+    <div class="flex items-center justify-between border-b border-gray-100 px-4 py-3.5">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center font-extrabold">A</div>
-        <span class="font-semibold text-gray-800">A-market</span>
-        <span class="text-gray-400">— سوبر ماركت وتجزئة</span>
+        <h2 class="text-base font-extrabold text-gray-900">سلة الطلبات</h2>
+        <span id="cart-count-chip" class="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-bold text-brand-600">0 صنف</span>
       </div>
-      <div class="text-center sm:text-left">الفروع: مدينة نصر • المعادي • التجمع الخامس</div>
-      <a id="waFooter" href="#" target="_blank" rel="noopener" class="text-green-600 hover:text-green-700 font-semibold">اطلب عبر الواتساب</a>
+      <button id="cart-close" type="button" aria-label="إغلاق السلة" class="grid h-9 w-9 place-items-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-gray-700">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
     </div>
-  </footer>
 
-  <script>
-    const WHATSAPP_NUMBER = '201000000000'; // رقم تجريبي - يمكن تغييره
-    const BRANCHES = 'مدينة نصر • المعادي • التجمع الخامس';
-    const waLink = (msg) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    <div id="cart-items" class="flex-1 overflow-y-auto px-4"></div>
 
-    document.getElementById('waHeader').href = waLink(`مرحباً A-market، أود الاستفسار عن الأصناف المتاحة.\nالفروع: ${BRANCHES}`);
-    document.getElementById('waHero').href = waLink(`مرحباً A-market، أود تقديم طلب من المنيو الإلكتروني.`);
-    document.getElementById('waFooter').href = waLink(`مرحباً A-market، أود تقديم طلب.`);
+    <div class="border-t border-gray-100 bg-gray-50/70 px-4 pb-4 pt-3.5">
+      <div class="flex items-center justify-between text-xs font-bold text-gray-500">
+        <span>عدد الأصناف</span>
+        <span id="cart-lines">0</span>
+      </div>
+      <div class="mt-1.5 flex items-baseline justify-between">
+        <span class="text-sm font-extrabold text-gray-900">الإجمالي</span>
+        <span class="text-xl font-black text-brand-600"><span id="cart-total">0</span> <span class="text-[11px] font-bold text-gray-500">ج.م</span></span>
+      </div>
+      <p class="mt-1 text-[10px] font-semibold text-gray-400">الأسعار استرشادية — التوصيل يُحسب حسب المنطقة.</p>
+      <a id="cart-wa" href="#" target="_blank" rel="noopener"
+         class="mt-3 flex items-center justify-center gap-2 rounded-xl bg-wa-500 px-4 py-3 text-sm font-extrabold text-white transition hover:bg-wa-600">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.02 2C6.6 2 2.2 6.4 2.2 11.82c0 1.73.45 3.42 1.31 4.9L2 22l5.42-1.46a9.8 9.8 0 0 0 4.6 1.17h.01c5.42 0 9.82-4.4 9.82-9.82S17.44 2 12.02 2Zm0 17.94h-.01a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.06.83.82-3-.19-.31a8.1 8.1 0 0 1-1.24-4.32 8.12 8.12 0 0 1 8.12-8.11c2.17 0 4.2.85 5.74 2.38a8.07 8.07 0 0 1 2.38 5.74 8.12 8.12 0 0 1-8.13 8.1Z"/><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.65-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.62-.93-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.06 2.85 1.2 3.05c.15.2 2.08 3.32 5.04 4.53 2.95 1.2 2.95.8 3.48.75.53-.05 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.57-.35Z"/></svg>
+        إرسال الطلب عبر واتساب
+      </a>
+      <button id="cart-clear" type="button" class="mt-2 w-full rounded-xl border border-gray-200 py-2 text-[11px] font-bold text-gray-500 transition hover:border-brand-200 hover:text-brand-600">تفريغ السلة</button>
+    </div>
+  </aside>
+</div>
 
-    const img = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=600&q=80`;
+<!-- شريط السلة السفلي (موبايل) -->
+<div id="cart-bar" class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t border-gray-200 bg-white/95 px-4 py-3 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur md:hidden">
+  <div class="mx-auto flex max-w-7xl items-center gap-3">
+    <div class="leading-tight">
+      <p class="text-[10px] font-semibold text-gray-400">الإجمالي (<span id="bar-count">0</span> صنف)</p>
+      <p class="text-base font-black text-gray-900"><span id="bar-total">0</span> ج.م</p>
+    </div>
+    <button id="bar-open" type="button" class="flex-1 rounded-xl bg-brand-600 px-4 py-3 text-sm font-extrabold text-white transition hover:bg-brand-700">عرض السلة والطلب</button>
+  </div>
+</div>
+<div id="cart-space" class="md:hidden" style="height:0"></div>
 
-    const products = [
-      // منتجات الألبان
-      {id:'AM-D01', name:'لبن كامل الدسم', weight:'1 لتر', price:32, cat:'dairy', catName:'منتجات الألبان', img:img('1550583724-b2692b85b150')},
-      {id:'AM-D02', name:'لبن خالي الدسم', weight:'1 لتر', price:35, cat:'dairy', catName:'منتجات الألبان', img:img('1563636619-e9143da7973b')},
-      {id:'AM-D03', name:'جبنة بيضاء', weight:'500 جم', price:55, cat:'dairy', catName:'منتجات الألبان', img:img('1486297678162-eb2a19b0a32d')},
-      {id:'AM-D04', name:'جبنة شيدر شرائح', weight:'200 جم', price:48, cat:'dairy', catName:'منتجات الألبان', img:img('1452195100486-9cc805987862')},
-      {id:'AM-D05', name:'بيض بلدي', weight:'علبة 30 بيضة', price:145, cat:'dairy', catName:'منتجات الألبان', img:img('1518569656558-1f25e69d93d7')},
-      {id:'AM-D06', name:'بيض أحمر', weight:'كرتونة 10 بيضات', price:55, cat:'dairy', catName:'منتجات الألبان', img:img('1582722872445-44dc5f7e3c8f')},
-      {id:'AM-D07', name:'زبادي طبيعي', weight:'علبة 110 جم', price:8, cat:'dairy', catName:'منتجات الألبان', img:img('1488477181946-6428a0291777')},
-      {id:'AM-D08', name:'زبادي فواكه', weight:'عبوة 4 قطع', price:38, cat:'dairy', catName:'منتجات الألبان', img:img('1571212515416-fef01fc43637')},
-      {id:'AM-D09', name:'زبدة طبيعية', weight:'200 جم', price:45, cat:'dairy', catName:'منتجات الألبان', img:img('1589985270826-4b7bb135bc9d')},
-      {id:'AM-D10', name:'جبنة موتزاريلا', weight:'250 جم', price:62, cat:'dairy', catName:'منتجات الألبان', img:img('1618164436241-4473940d1f5c')},
+<script>
+  /* ============================================================
+     رقم المتجر — الصيغة الدولية بدون + وبدون أصفار بادئة
+     ============================================================ */
+  const WHATSAPP_NUMBER = '201099666000';
 
-      // البقالة الجافة
-      {id:'AM-G01', name:'أرز مصري فاخر', weight:'1 كجم', price:38, cat:'grocery', catName:'البقالة الجافة', img:img('1586201375761-83865001e31c')},
-      {id:'AM-G02', name:'مكرونة إسباجيتي', weight:'400 جم', price:18, cat:'grocery', catName:'البقالة الجافة', img:img('1551462147-ff29053bfc14')},
-      {id:'AM-G03', name:'عيش فينو طازج', weight:'10 أرغفة', price:15, cat:'grocery', catName:'البقالة الجافة', img:img('1509440159596-0249088772ff')},
-      {id:'AM-G04', name:'دقيق أبيض فاخر', weight:'1 كجم', price:28, cat:'grocery', catName:'البقالة الجافة', img:img('1574323347407-f5e1ad6d020b')},
-      {id:'AM-G05', name:'سكر أبيض', weight:'1 كجم', price:36, cat:'grocery', catName:'البقالة الجافة', img:img('1626082927389-6cd097cdc6ec')},
-      {id:'AM-G06', name:'زيت عباد الشمس', weight:'1 لتر', price:75, cat:'grocery', catName:'البقالة الجافة', img:img('1474979266404-7eaacbcd87c5')},
-      {id:'AM-G07', name:'شاي أسود فاخر', weight:'100 فتلة', price:55, cat:'grocery', catName:'البقالة الجافة', img:img('1544787219-7f47ccb76574')},
-      {id:'AM-G08', name:'قهوة سريعة التحضير', weight:'200 جم', price:95, cat:'grocery', catName:'البقالة الجافة', img:img('1447933601403-0c6688de566e')},
-      {id:'AM-G09', name:'فول مدمس', weight:'400 جم', price:22, cat:'grocery', catName:'البقالة الجافة', img:img('1515543904379-3d757afe72e4')},
-      {id:'AM-G10', name:'عسل نحل طبيعي', weight:'350 جم', price:120, cat:'grocery', catName:'البقالة الجافة', img:img('1587049352851-8d4e89133924')},
-      {id:'AM-G11', name:'بسكويت سادة', weight:'12 قطعة', price:25, cat:'grocery', catName:'البقالة الجافة', img:img('1558961363-fa8fdf82db35')},
-      {id:'AM-G12', name:'شوكولاتة', weight:'90 جم', price:30, cat:'grocery', catName:'البقالة الجافة', img:img('1511381939415-e44015466834')},
+  const HERO_IMG = 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&h=420&q=70';
 
-      // المشروبات
-      {id:'AM-B01', name:'عصير برتقال طبيعي', weight:'1 لتر', price:35, cat:'beverages', catName:'المشروبات', img:img('1622597467836-f3285f2131b8')},
-      {id:'AM-B02', name:'عصير برتقال', weight:'1 لتر', price:28, cat:'beverages', catName:'المشروبات', img:img('1546173159-315724a31696')},
-      {id:'AM-B03', name:'مياه معدنية', weight:'1.5 لتر', price:7, cat:'beverages', catName:'المشروبات', img:img('1523362628745-0c100150b504')},
-      {id:'AM-B04', name:'مشروب غازي', weight:'1 لتر', price:18, cat:'beverages', catName:'المشروبات', img:img('1554866585-cd94860890b7')},
-      {id:'AM-B05', name:'كولا', weight:'330 مل', price:12, cat:'beverages', catName:'المشروبات', img:img('1629203851122-3726ecdf080e')},
-      {id:'AM-B06', name:'عصير تفاح', weight:'1 لتر', price:30, cat:'beverages', catName:'المشروبات', img:img('1534353473418-4cfa6c56fd38')},
-      {id:'AM-B07', name:'عصير مشكل', weight:'1 لتر', price:32, cat:'beverages', catName:'المشروبات', img:img('1613478223719-2ab802602423')},
-      {id:'AM-B08', name:'شاي مثلج', weight:'500 مل', price:20, cat:'beverages', catName:'المشروبات', img:img('1571934811356-5cc061b6821f')},
+  const CATEGORIES = [
+    { id: 'dairy',    label: 'الألبان والأجبان',  note: 'طازج يومياً',
+      img: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=900&h=420&q=70' },
+    { id: 'bakery',   label: 'المخبوزات',         note: 'مخبوز اليوم',
+      img: 'https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=900&h=420&q=70' },
+    { id: 'grocery',  label: 'البقالة الجافة',    note: 'أساسيات البيت',
+      img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=900&h=420&q=70' },
+    { id: 'snacks',   label: 'الوجبات الخفيفة',   note: 'للسهرات والضيوف',
+      img: 'https://images.unsplash.com/photo-1760997707695-f0b5527e5de9?auto=format&fit=crop&w=900&h=420&q=70' },
+    { id: 'drinks',   label: 'المشروبات',         note: 'باردة وجاهزة',
+      img: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=900&h=420&q=70' },
+    { id: 'produce',  label: 'الخضار والفواكه',   note: 'طازج من السوق',
+      img: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=900&h=420&q=70' },
+    { id: 'meat',     label: 'اللحوم والدواجن',   note: 'مقطعة حسب الطلب',
+      img: 'https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=900&h=420&q=70' },
+    { id: 'frozen',   label: 'المجمدات',          note: 'آيس كريم ومجمدات',
+      img: 'https://images.unsplash.com/photo-1782149461714-0b033e08c15f?auto=format&fit=crop&w=900&h=420&q=70' },
+    { id: 'cleaning', label: 'المنظفات والمنزل',  note: 'كل مستلزمات النظافة',
+      img: 'https://images.unsplash.com/photo-1647577746559-c9a28c0d0870?auto=format&fit=crop&w=900&h=420&q=70' },
+    { id: 'personal', label: 'العناية الشخصية',   note: 'علامات موثوقة',
+      img: 'https://images.unsplash.com/photo-1786725009844-3daea6bd1fb0?auto=format&fit=crop&w=900&h=420&q=70' }
+  ];
 
-      // المنظفات
-      {id:'AM-C01', name:'مسحوق غسيل أوتوماتيك', weight:'2.5 كجم', price:165, cat:'cleaning', catName:'المنظفات', img:img('1626806787461-102c1bfaaea1')},
-      {id:'AM-C02', name:'مطهر أرضيات', weight:'1 لتر', price:45, cat:'cleaning', catName:'المنظفات', img:img('1585421514738-01798e348b17')},
-      {id:'AM-C03', name:'منظف متعدد الأغراض', weight:'700 مل', price:38, cat:'cleaning', catName:'المنظفات', img:img('1563453392212-326f5e854473')},
-      {id:'AM-C04', name:'سائل غسيل أطباق', weight:'600 مل', price:32, cat:'cleaning', catName:'المنظفات', img:img('1595246140625-573b715d11dc')},
-      {id:'AM-C05', name:'صابون سائل لليدين', weight:'500 مل', price:35, cat:'cleaning', catName:'المنظفات', img:img('1600857544200-b2f666a9a2ec')},
-      {id:'AM-C06', name:'شامبو عائلي', weight:'400 مل', price:55, cat:'cleaning', catName:'المنظفات', img:img('1556228578-8c89e6adf883')},
+  const PRODUCTS = [
+    /* ---------- الألبان والأجبان ---------- */
+    { code: 'AM-101', name: 'حليب جهينة كامل الدسم', pack: '1 لتر', price: 45, cat: 'dairy',
+      img: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-102', name: 'جبنة رومي قديمة', pack: '250 جم', price: 78, cat: 'dairy',
+      img: 'https://images.unsplash.com/photo-1683314573422-649a3c6ad784?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-103', name: 'جبنة شيدر شرائح', pack: '200 جم', price: 64, cat: 'dairy',
+      img: 'https://images.unsplash.com/photo-1631379578550-7038263db699?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-104', name: 'جبنة مثلثات كريمي', pack: '8 قطع', price: 28, cat: 'dairy',
+      img: 'https://images.unsplash.com/photo-1770833255726-5db635f26abd?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-105', name: 'زبادي طبيعي', pack: '170 جم', price: 12, cat: 'dairy',
+      img: 'https://images.unsplash.com/photo-1571212515416-fef01fc43637?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-106', name: 'زبدة طبيعية', pack: '250 جم', price: 129, cat: 'dairy',
+      img: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-107', name: 'بيض بلدي طازج', pack: 'طبق 12 بيضة', price: 96, cat: 'dairy',
+      img: 'https://images.unsplash.com/photo-1498654077810-12c21d4d6dc3?auto=format&fit=crop&w=560&h=420&q=70' },
 
-      // الخضار والفواكه
-      {id:'AM-P01', name:'طماطم طازجة', weight:'1 كجم', price:18, cat:'produce', catName:'الخضار والفواكه', img:img('1592924357228-91a4daadcfea')},
-      {id:'AM-P02', name:'طماطم بلدي', weight:'1 كجم', price:20, cat:'produce', catName:'الخضار والفواكه', img:img('1567306226416-28f0efdc88ce')},
-      {id:'AM-P03', name:'موز', weight:'1 كجم', price:30, cat:'produce', catName:'الخضار والفواكه', img:img('1571771894821-ce9b6c11b08e')},
-      {id:'AM-P04', name:'تفاح أحمر', weight:'1 كجم', price:55, cat:'produce', catName:'الخضار والفواكه', img:img('1560806887-1e4cd0b6cbd6')},
-      {id:'AM-P05', name:'برتقال عصير', weight:'1 كجم', price:22, cat:'produce', catName:'الخضار والفواكه', img:img('1547514701-42782101795e')},
-      {id:'AM-P06', name:'عنب أحمر', weight:'1 كجم', price:45, cat:'produce', catName:'الخضار والفواكه', img:img('1537640538966-79f369143f8f')},
-      {id:'AM-P07', name:'فراولة', weight:'علبة 500 جم', price:35, cat:'produce', catName:'الخضار والفواكه', img:img('1601004890684-d8cbf643f5f2')},
-      {id:'AM-P08', name:'بطاطس', weight:'1 كجم', price:15, cat:'produce', catName:'الخضار والفواكه', img:img('1518977676601-b53f82aba655')},
-      {id:'AM-P09', name:'خيار', weight:'1 كجم', price:18, cat:'produce', catName:'الخضار والفواكه', img:img('1449300079323-02e209d9d3a6')},
-      {id:'AM-P10', name:'ليمون', weight:'1 كجم', price:25, cat:'produce', catName:'الخضار والفواكه', img:img('1590502593747-42a996133562')},
-      {id:'AM-P11', name:'بصل أحمر', weight:'1 كجم', price:16, cat:'produce', catName:'الخضار والفواكه', img:img('1518977956812-cd3dbadaaf31')},
-      {id:'AM-P12', name:'جزر طازج', weight:'1 كجم', price:14, cat:'produce', catName:'الخضار والفواكه', img:img('1598170845058-32b9d6a5da37')},
-    ];
+    /* ---------- المخبوزات ---------- */
+    { code: 'AM-201', name: 'توست أبيض', pack: '600 جم', price: 32, cat: 'bakery',
+      img: 'https://images.unsplash.com/photo-1598373182133-52452f7691ef?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-202', name: 'خبز بلدي', pack: '5 أرغفة', price: 10, cat: 'bakery',
+      img: 'https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-203', name: 'كرواسون بالزبدة', pack: '4 قطع', price: 45, cat: 'bakery',
+      img: 'https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-204', name: 'كيك شوكولاتة', pack: '500 جم', price: 120, cat: 'bakery',
+      img: 'https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?auto=format&fit=crop&w=560&h=420&q=70' },
 
-    const grid = document.getElementById('productsGrid');
-    const emptyState = document.getElementById('emptyState');
-    const searchInput = document.getElementById('search');
-    const catButtons = document.querySelectorAll('.cat-btn');
-    let activeCat = 'all';
+    /* ---------- البقالة الجافة ---------- */
+    { code: 'AM-301', name: 'أرز مصري فاخر', pack: '1 كجم', price: 32, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-302', name: 'مكرونة اسباجتي', pack: '400 جم', price: 14, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1551462147-ff29053bfc14?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-303', name: 'مكرونة بيني', pack: '400 جم', price: 15, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-304', name: 'زيت زيتون بكر ممتاز', pack: '500 مل', price: 245, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-305', name: 'سكر مكعبات فاخر', pack: '500 جم', price: 42, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1709651808265-977ed7ef78c6?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-306', name: 'دقيق فاخر', pack: '1 كجم', price: 26, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1761222191837-4448599c09fc?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-307', name: 'عدس أصفر', pack: '500 جم', price: 38, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1763368392508-3d4bddfdd20a?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-308', name: 'فاصوليا بيضاء', pack: '500 جم', price: 34, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1765144815957-6bc44c13fc2c?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-309', name: 'شاي أسود فاخر', pack: '250 جم', price: 72, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-310', name: 'قهوة عربية محمصة', pack: '250 جم', price: 110, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1783926014847-748a8074eb38?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-311', name: 'عسل نحل طبيعي', pack: '500 جم', price: 185, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-312', name: 'مربى مشمش', pack: '340 جم', price: 48, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1645871306587-bebaa2f1dfc0?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-313', name: 'ملح طعام ناعم', pack: '500 جم', price: 8, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1763974463967-647601c65961?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-314', name: 'كاتشب طماطم', pack: '320 جم', price: 22, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1624462048568-72794ee6d6f8?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-315', name: 'نودلز سريع التحضير', pack: '5 أكياس', price: 25, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1788519036479-4745805551e2?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-316', name: 'كورن فليكس', pack: '375 جم', price: 58, cat: 'grocery',
+      img: 'https://images.unsplash.com/photo-1521483451569-e33803c0330c?auto=format&fit=crop&w=560&h=420&q=70' },
 
-    function productCard(p) {
-      const msg = `مرحباً A-market، أود طلب المنتج التالي:\n- الاسم: ${p.name}\n- الكود: ${p.id}\n- الوزن/العبوة: ${p.weight}\n- السعر: ${p.price} ج.م\n- القسم: ${p.catName}`;
-      const href = waLink(msg);
-      return `
-        <article class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-soft transition flex flex-col" data-name="${p.name}" data-cat="${p.cat}">
-          <div class="relative aspect-[4/3] bg-gray-100 overflow-hidden">
-            <img src="${p.img}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80';">
-            <span class="absolute top-2 right-2 bg-white/90 backdrop-blur text-[11px] font-semibold text-gray-700 px-2 py-1 rounded-full border border-gray-200">${p.catName}</span>
-          </div>
-          <div class="p-3.5 flex flex-col flex-1">
-            <div class="flex items-start justify-between gap-2 mb-1">
-              <h3 class="font-bold text-gray-900 leading-snug text-[15px]">${p.name}</h3>
-            </div>
-            <p class="text-xs text-gray-500 mb-2">${p.weight} • <span class="text-gray-400">كود: ${p.id}</span></p>
-            <div class="mt-auto pt-1">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-brand-700 font-extrabold text-lg">${p.price} <span class="text-sm font-bold">ج.م</span></span>
-              </div>
-              <a href="${href}" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">
-                <svg class="w-4 h-4" viewBox="0 0 32 32" fill="currentColor"><path d="M19.11 17.2c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.62.14-.18.27-.71.88-.87 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.62-1.49-.85-2.04-.22-.53-.45-.46-.62-.47h-.53c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.99 2.65 1.13 2.83.14.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.57.58.66.21 1.26.18 1.74.11.53-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/><path d="M26.67 5.33A14.62 14.62 0 0016.02 1C7.97 1 1.42 7.55 1.42 15.6c0 2.57.67 5.08 1.95 7.29L1.3 31l8.3-2.02a14.53 14.53 0 006.42 1.5h.01c8.05 0 14.6-6.55 14.6-14.6 0-3.9-1.52-7.57-4.28-10.33zM16.03 28.1h-.01a12.1 12.1 0 01-6.17-1.69l-.44-.26-4.92 1.2 1.31-4.8-.29-.49a12.08 12.08 0 01-1.85-6.46c0-6.68 5.44-12.12 12.13-12.12 3.24 0 6.28 1.26 8.57 3.55a12.04 12.04 0 013.55 8.58c0-6.68-5.44 12.12-12.12 12.12z"/></svg>
-                اطلب عبر الواتساب
-              </a>
-            </div>
-          </div>
-        </article>`;
+    /* ---------- الوجبات الخفيفة ---------- */
+    { code: 'AM-401', name: 'شيبسي بالملح', pack: '170 جم', price: 20, cat: 'snacks',
+      img: 'https://images.unsplash.com/photo-1760997707695-f0b5527e5de9?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-402', name: 'شوكولاتة بالحليب', pack: '100 جم', price: 30, cat: 'snacks',
+      img: 'https://images.unsplash.com/photo-1610450949065-1f2841536c88?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-403', name: 'بسكويت شاي', pack: '200 جم', price: 18, cat: 'snacks',
+      img: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-404', name: 'مكسرات مشكلة', pack: '250 جم', price: 95, cat: 'snacks',
+      img: 'https://images.unsplash.com/photo-1600189020840-e9918c25269d?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-405', name: 'فشار جاهز', pack: '100 جم', price: 15, cat: 'snacks',
+      img: 'https://images.unsplash.com/photo-1578849278619-e73505e9610f?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-406', name: 'بلح فاخر', pack: '500 جم', price: 85, cat: 'snacks',
+      img: 'https://images.unsplash.com/photo-1784043437426-3261c7f2c3de?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-407', name: 'كراكرز بالسمسم', pack: '200 جم', price: 16, cat: 'snacks',
+      img: 'https://images.unsplash.com/photo-1615294209152-571969a7fbfe?auto=format&fit=crop&w=560&h=420&q=70' },
+
+    /* ---------- المشروبات ---------- */
+    { code: 'AM-501', name: 'مياه معدنية', pack: '1.5 لتر', price: 8, cat: 'drinks',
+      img: 'https://images.unsplash.com/photo-1616118132534-381148898bb4?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-502', name: 'كوكاكولا', pack: '320 مل', price: 15, cat: 'drinks',
+      img: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-503', name: 'عصير برتقال طبيعي', pack: '1 لتر', price: 35, cat: 'drinks',
+      img: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-504', name: 'عصير مانجو', pack: '1 لتر', price: 32, cat: 'drinks',
+      img: 'https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-505', name: 'مشروب طاقة', pack: '250 مل', price: 35, cat: 'drinks',
+      img: 'https://images.unsplash.com/photo-1560689189-65b6ed6228e7?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-506', name: 'قهوة مثلجة', pack: '330 مل', price: 30, cat: 'drinks',
+      img: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-507', name: 'شاي أخضر', pack: '20 كيس', price: 65, cat: 'drinks',
+      img: 'https://images.unsplash.com/photo-1766232578337-ff7bdb6d1f8b?auto=format&fit=crop&w=560&h=420&q=70' },
+
+    /* ---------- الخضار والفواكه ---------- */
+    { code: 'AM-601', name: 'تفاح أحمر', pack: '1 كجم', price: 69, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-602', name: 'موز بلدي', pack: '1 كجم', price: 28, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-603', name: 'طماطم طازجة', pack: '1 كجم', price: 18, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1582284540020-8acbe03f4924?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-604', name: 'خيار', pack: '1 كجم', price: 20, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-605', name: 'بطاطس', pack: '1 كجم', price: 16, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-606', name: 'بصل أبيض', pack: '1 كجم', price: 14, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1757813027601-49030d3162ae?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-607', name: 'برتقال', pack: '1 كجم', price: 24, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1557800636-894a64c1696f?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-608', name: 'فراولة طازجة', pack: '500 جم', price: 55, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1587393855524-087f83d95bc9?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-609', name: 'ليمون', pack: '500 جم', price: 22, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1774857244194-b2c66ac93e43?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-610', name: 'جزر', pack: '1 كجم', price: 17, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-611', name: 'فلفل ألوان', pack: '500 جم', price: 30, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1601648764658-cf37e8c89b70?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-612', name: 'عنب أسود', pack: '1 كجم', price: 48, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1596363505729-4190a9506133?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-613', name: 'مانجو', pack: '1 كجم', price: 65, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-614', name: 'خس بلدي', pack: '1 رأس', price: 12, cat: 'produce',
+      img: 'https://images.unsplash.com/photo-1640958904159-51ae08bd3412?auto=format&fit=crop&w=560&h=420&q=70' },
+
+    /* ---------- اللحوم والدواجن ---------- */
+    { code: 'AM-701', name: 'فراخ بلدي كاملة', pack: '1 كجم', price: 95, cat: 'meat',
+      img: 'https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-702', name: 'لحمة بقري طازجة', pack: '1 كجم', price: 320, cat: 'meat',
+      img: 'https://images.unsplash.com/photo-1723893905879-0e309c2a8e06?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-703', name: 'ستيك بقري', pack: '500 جم', price: 280, cat: 'meat',
+      img: 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-704', name: 'سمك بلطي طازج', pack: '1 كجم', price: 85, cat: 'meat',
+      img: 'https://images.unsplash.com/photo-1611214774777-3d997a9d0e35?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-705', name: 'سجق بلدي', pack: '500 جم', price: 110, cat: 'meat',
+      img: 'https://images.unsplash.com/photo-1585325701165-351af916e581?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-706', name: 'جمبري طازج', pack: '500 جم', price: 190, cat: 'meat',
+      img: 'https://images.unsplash.com/photo-1504309250229-4f08315f3b5c?auto=format&fit=crop&w=560&h=420&q=70' },
+
+    /* ---------- المجمدات ---------- */
+    { code: 'AM-801', name: 'آيس كريم فانيليا', pack: '1 لتر', price: 65, cat: 'frozen',
+      img: 'https://images.unsplash.com/photo-1782149461714-0b033e08c15f?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-802', name: 'آيس كريم شوكولاتة', pack: '1 لتر', price: 70, cat: 'frozen',
+      img: 'https://images.unsplash.com/photo-1562790879-dfde82829db0?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-803', name: 'آيس كريم فراولة', pack: '500 مل', price: 55, cat: 'frozen',
+      img: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=560&h=420&q=70' },
+
+    /* ---------- المنظفات والمنزل ---------- */
+    { code: 'AM-901', name: 'سائل غسيل الأطباق', pack: '1 لتر', price: 48, cat: 'cleaning',
+      img: 'https://images.unsplash.com/photo-1647577746559-c9a28c0d0870?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-902', name: 'منظف أرضيات معطّر', pack: '1 لتر', price: 39, cat: 'cleaning',
+      img: 'https://images.unsplash.com/photo-1669101602108-fa5ba89507ee?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-903', name: 'مسحوق غسيل', pack: '2.5 كجم', price: 165, cat: 'cleaning',
+      img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-904', name: 'سائل غسيل الملابس', pack: '2 لتر', price: 145, cat: 'cleaning',
+      img: 'https://images.unsplash.com/photo-1782292016926-849449fd171d?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-905', name: 'كلور مطهر', pack: '1 لتر', price: 25, cat: 'cleaning',
+      img: 'https://images.unsplash.com/photo-1584813470613-5b1c1cad3d69?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-906', name: 'إسفنجة جلي', pack: '3 قطع', price: 12, cat: 'cleaning',
+      img: 'https://images.unsplash.com/photo-1778178965223-e5a29e612504?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-907', name: 'أكياس قمامة', pack: '30 كيس', price: 35, cat: 'cleaning',
+      img: 'https://images.unsplash.com/photo-1611830696076-462acd8aa9e9?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-908', name: 'مناديل ورقية', pack: '4 رول', price: 26, cat: 'cleaning',
+      img: 'https://images.unsplash.com/photo-1609840112990-4265448268d1?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-909', name: 'معطر جو', pack: '300 مل', price: 42, cat: 'cleaning',
+      img: 'https://images.unsplash.com/photo-1572635196243-4dd75fbdbd7f?auto=format&fit=crop&w=560&h=420&q=70' },
+
+    /* ---------- العناية الشخصية ---------- */
+    { code: 'AM-1001', name: 'شامبو للشعر', pack: '400 مل', price: 95, cat: 'personal',
+      img: 'https://images.unsplash.com/photo-1786725009844-3daea6bd1fb0?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-1002', name: 'معجون أسنان', pack: '100 مل', price: 32, cat: 'personal',
+      img: 'https://images.unsplash.com/photo-1763048819607-ea55217cff34?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-1003', name: 'فرشاة أسنان', pack: 'قطعة', price: 15, cat: 'personal',
+      img: 'https://images.unsplash.com/photo-1520013573795-38516d2661e4?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-1004', name: 'مزيل عرق', pack: '50 مل', price: 45, cat: 'personal',
+      img: 'https://images.unsplash.com/photo-1604523412953-ec5f89b57be3?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-1005', name: 'كريم مرطب', pack: '100 مل', price: 85, cat: 'personal',
+      img: 'https://images.unsplash.com/photo-1585945037805-5fd82c2e60b1?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-1006', name: 'مناديل مبللة', pack: '80 منديل', price: 30, cat: 'personal',
+      img: 'https://images.unsplash.com/photo-1584743578805-d7991ca2d5d4?auto=format&fit=crop&w=560&h=420&q=70' },
+    { code: 'AM-1007', name: 'صابون طبيعي', pack: '100 جم', price: 18, cat: 'personal',
+      img: 'https://images.unsplash.com/photo-1781080922537-7d5338f96e95?auto=format&fit=crop&w=560&h=420&q=70' }
+  ];
+
+  const waIcon = '<svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.65-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.62-.93-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.06 2.85 1.2 3.05c.15.2 2.08 3.32 5.04 4.53 2.95 1.2 2.95.8 3.48.75.53-.05 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.57-.35Z"/><path d="M12.02 2C6.6 2 2.2 6.4 2.2 11.82c0 1.73.45 3.42 1.31 4.9L2 22l5.42-1.46a9.8 9.8 0 0 0 4.6 1.17h.01c5.42 0 9.82-4.4 9.82-9.82S17.44 2 12.02 2Zm0 17.94h-.01a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.06.83.82-3-.19-.31a8.1 8.1 0 0 1-1.24-4.32 8.12 8.12 0 0 1 8.12-8.11c2.17 0 4.2.85 5.74 2.38a8.07 8.07 0 0 1 2.38 5.74 8.12 8.12 0 0 1-8.13 8.1Z"/></svg>';
+
+  /* صورة بديلة في حال تعذّر تحميل صورة المنتج */
+  const FALLBACK_IMG = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="560" height="420">' +
+    '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
+    '<stop offset="0%" stop-color="#f3f4f6"/><stop offset="100%" stop-color="#e5e7eb"/></linearGradient></defs>' +
+    '<rect width="560" height="420" fill="url(#g)"/>' +
+    '<text x="280" y="220" text-anchor="middle" font-family="Arial" font-size="32" font-weight="bold" fill="#9ca3af">A-market</text>' +
+    '</svg>'
+  );
+
+  const state = { homeQuery: '', catQuery: '', catId: 'all' };
+
+  const viewHome = document.getElementById('view-home');
+  const viewCat = document.getElementById('view-cat');
+  const hero = document.getElementById('hero');
+  const categoryGrid = document.getElementById('category-grid');
+  const homeBrowse = document.getElementById('home-browse');
+  const homeResults = document.getElementById('home-results');
+  const homeResultsGrid = document.getElementById('home-results-grid');
+  const homeResultsLabel = document.getElementById('home-results-label');
+  const homeEmpty = document.getElementById('home-empty');
+  const searchHome = document.getElementById('search-home');
+  const clearHome = document.getElementById('clear-home');
+  const searchCat = document.getElementById('search-cat');
+  const clearCat = document.getElementById('clear-cat');
+  const catGrid = document.getElementById('cat-grid');
+  const catEmpty = document.getElementById('cat-empty');
+  const catCount = document.getElementById('cat-count');
+  const chips = document.getElementById('catbar');
+  const prevBtn = document.getElementById('nav-prev');
+  const nextBtn = document.getElementById('nav-next');
+  const heroCount = document.getElementById('hero-count');
+  const heroCats = document.getElementById('hero-cats');
+
+  const NAV_ORDER = ['all'].concat(CATEGORIES.map(function (c) { return c.id; }));
+  const catById = function (id) {
+    return CATEGORIES.filter(function (c) { return c.id === id; })[0] || null;
+  };
+  const countIn = function (id) {
+    return id === 'all' ? PRODUCTS.length
+      : PRODUCTS.filter(function (p) { return p.cat === id; }).length;
+  };
+  const labelOf = function (id) {
+    return id === 'all' ? 'كل الأصناف' : (catById(id) || {}).label;
+  };
+
+  /* ---------- تطبيع النص العربي للبحث ---------- */
+  function normalize(text) {
+    return String(text).toLowerCase()
+      .replace(/[\u064B-\u0652\u0640]/g, '')
+      .replace(/[أإآٱ]/g, 'ا')
+      .replace(/ى/g, 'ي')
+      .replace(/ة/g, 'ه')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  /* ---------- واتساب ---------- */
+  function whatsappLink(message) {
+    return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+  }
+
+  function productMessage(p) {
+    return 'مرحباً A-market 👋\n' +
+           'أرغب في طلب الصنف التالي:\n\n' +
+           '🔖 رمز المنتج: ' + p.code + '\n' +
+           '🛍️ الصنف: ' + p.name + '\n' +
+           '⚖️ العبوة: ' + p.pack + '\n' +
+           '💰 السعر: ' + p.price + ' ج.م\n\n' +
+           'من فضلكم أكّدوا التوفر وموعد التوصيل. شكراً!';
+  }
+
+  const generalMessage =
+    'مرحباً A-market 👋\n' +
+    'أرغب في الاستفسار عن توفر أحد الأصناف وعن مواعيد التوصيل لفرع العاشر من رمضان.';
+
+  const chevronLeft = '<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>';
+
+  /* ---------- بطاقة منتج ---------- */
+  function cardHTML(p, i) {
+    return (
+      '<article class="product card-in group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-900/10"' +
+        ' data-search="' + normalize(p.name + ' ' + p.code + ' ' + p.pack) + '" data-code="' + p.code + '" style="animation-delay:' + Math.min(i * 25, 200) + 'ms">' +
+        '<div class="relative overflow-hidden bg-gray-100">' +
+          '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy" decoding="async" ' +
+               'onerror="this.onerror=null;this.src=\'' + FALLBACK_IMG + '\'" ' +
+               'class="h-32 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-40 md:h-44" />' +
+          '<span class="absolute right-2 top-2 rounded-full bg-white/95 px-2 py-1 text-[10px] font-extrabold tracking-wide text-gray-600 shadow-sm backdrop-blur">' + p.code + '</span>' +
+        '</div>' +
+        '<div class="flex flex-1 flex-col p-3 md:p-4">' +
+          '<h3 class="min-h-[40px] text-[13px] font-extrabold leading-5 text-gray-900 md:text-sm">' + p.name + '</h3>' +
+          '<p class="mt-0.5 text-[11px] font-semibold text-gray-400">' + p.pack + '</p>' +
+          '<div class="mt-2 flex items-baseline gap-1">' +
+            '<span class="text-lg font-black text-brand-600 md:text-xl">' + p.price + '</span>' +
+            '<span class="text-[11px] font-bold text-gray-500">ج.م</span>' +
+          '</div>' +
+          '<div class="mt-3 flex gap-1.5" data-cart-empty>' +
+            '<button type="button" class="js-add flex flex-1 items-center justify-center gap-1 rounded-xl bg-brand-600 px-2 py-2.5 text-[11px] font-extrabold text-white transition hover:bg-brand-700 active:scale-[.98] md:text-xs">' +
+              '<svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>' +
+              'أضف للسلة' +
+            '</button>' +
+            '<a href="' + whatsappLink(productMessage(p)) + '" target="_blank" rel="noopener" ' +
+               'aria-label="اطلب ' + p.name + ' عبر واتساب" ' +
+               'class="grid w-9 shrink-0 place-items-center rounded-xl bg-wa-500 text-white transition hover:bg-wa-600">' +
+               waIcon +
+            '</a>' +
+          '</div>' +
+          '<div class="mt-3 hidden items-center justify-between gap-2 rounded-xl border border-brand-100 bg-brand-50 p-1" data-cart-in>' +
+            '<button type="button" class="js-minus grid h-8 w-8 place-items-center rounded-lg bg-white text-base font-black leading-none text-brand-600 shadow-sm" aria-label="تقليل الكمية">−</button>' +
+            '<span class="whitespace-nowrap text-[10px] font-extrabold text-brand-700"><span data-qty>0</span> بالسلة</span>' +
+            '<button type="button" class="js-plus grid h-8 w-8 place-items-center rounded-lg bg-brand-600 text-base font-black leading-none text-white" aria-label="زيادة الكمية">+</button>' +
+          '</div>' +
+        '</div>' +
+      '</article>'
+    );
+  }
+
+  /* ---------- كروت الأقسام في الرئيسية ---------- */
+  function renderCategoryGrid() {
+    categoryGrid.innerHTML = CATEGORIES.map(function (c) {
+      return (
+        '<a href="#/c/' + c.id + '" class="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-900/10">' +
+          '<div class="relative h-24 overflow-hidden bg-gray-100 sm:h-28 md:h-32">' +
+            '<img src="' + c.img + '" alt="' + c.label + '" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />' +
+            '<span class="absolute right-2 top-2 rounded-full bg-white/95 px-2 py-0.5 text-[10px] font-extrabold text-gray-600 shadow-sm backdrop-blur">' + countIn(c.id) + ' صنف</span>' +
+          '</div>' +
+          '<div class="flex flex-1 items-center justify-between gap-2 p-3 md:p-3.5">' +
+            '<div class="min-w-0">' +
+              '<p class="truncate text-[13px] font-extrabold text-gray-900 md:text-sm">' + c.label + '</p>' +
+              '<p class="mt-0.5 truncate text-[10px] font-semibold text-gray-400">' + c.note + '</p>' +
+            '</div>' +
+            '<span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gray-50 text-gray-400 transition group-hover:bg-brand-600 group-hover:text-white">' + chevronLeft + '</span>' +
+          '</div>' +
+        '</a>'
+      );
+    }).join('');
+  }
+
+  /* ---------- شريط الأقسام ---------- */
+  function renderTabs() {
+    chips.innerHTML =
+      '<button type="button" data-target="all" class="cat-tab shrink-0 rounded-full px-3.5 py-2 text-[11px] font-extrabold transition sm:text-xs">' +
+        'كل الأصناف<span class="mr-1.5 text-[10px] font-bold opacity-60">' + PRODUCTS.length + '</span></button>' +
+      CATEGORIES.map(function (c) {
+        return '<button type="button" data-target="' + c.id + '" class="cat-tab shrink-0 rounded-full px-3.5 py-2 text-[11px] font-extrabold transition sm:text-xs">' +
+          c.label + '<span class="mr-1.5 text-[10px] font-bold opacity-60">' + countIn(c.id) + '</span></button>';
+      }).join('');
+  }
+
+  function syncTabs(activeId) {
+    chips.querySelectorAll('.cat-tab').forEach(function (tab) {
+      const active = tab.dataset.target === activeId;
+      tab.className = 'cat-tab shrink-0 rounded-full px-3.5 py-2 text-[11px] font-extrabold transition sm:text-xs ' +
+        (active
+          ? 'bg-brand-600 text-white shadow-md shadow-brand-600/25'
+          : 'bg-gray-50 text-gray-600 hover:bg-brand-50 hover:text-brand-700');
+      if (active) tab.setAttribute('aria-current', 'page');
+      else tab.removeAttribute('aria-current');
+    });
+  }
+
+  function scrollTabIntoView(tab) {
+    if (!tab) return;
+    const bar = chips;
+    const box = bar.getBoundingClientRect();
+    const item = tab.getBoundingClientRect();
+    const delta = (item.left - box.left) - (box.width - item.width) / 2;
+    const max = bar.scrollWidth - bar.clientWidth;
+    const target = bar.scrollLeft + delta;
+    bar.scrollLeft = bar.scrollLeft <= 0
+      ? Math.max(-max, Math.min(0, target))
+      : Math.max(0, Math.min(max, target));
+  }
+
+  /* ---------- بحث الرئيسية ---------- */
+  function applyHomeFilter() {
+    const q = normalize(state.homeQuery);
+    clearHome.classList.toggle('hidden', state.homeQuery.length === 0);
+    homeBrowse.classList.toggle('hidden', q !== '');
+    homeResults.classList.toggle('hidden', q === '');
+
+    if (!q) {
+      homeResultsGrid.querySelectorAll('.product').forEach(function (card) { card.hidden = false; });
+      return;
     }
 
-    function render() {
-      const q = searchInput.value.trim().toLowerCase();
-      const filtered = products.filter(p => {
-        const matchCat = activeCat === 'all' || p.cat === activeCat;
-        const hay = (p.name + ' ' + p.id + ' ' + p.catName).toLowerCase();
-        const matchSearch = !q || hay.includes(q);
-        return matchCat && matchSearch;
-      });
-      grid.innerHTML = filtered.map(productCard).join('');
-      emptyState.classList.toggle('hidden', filtered.length !== 0);
-      grid.classList.toggle('hidden', filtered.length === 0);
-    }
-
-    catButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        activeCat = btn.dataset.cat;
-        catButtons.forEach(b => {
-          const active = b === btn;
-          b.classList.toggle('bg-brand-600', active);
-          b.classList.toggle('text-white', active);
-          b.classList.toggle('bg-white', !active);
-          b.classList.toggle('text-gray-700', !active);
-          b.classList.toggle('border', !active);
-          b.classList.toggle('border-gray-200', !active);
-        });
-        render();
-      });
+    let shown = 0;
+    homeResultsGrid.querySelectorAll('.product').forEach(function (card) {
+      const hit = card.dataset.search.indexOf(q) !== -1;
+      card.hidden = !hit;
+      if (hit) shown++;
     });
 
-    searchInput.addEventListener('input', render);
-    render();
-  </script>
+    homeEmpty.classList.toggle('hidden', shown !== 0);
+    homeResultsGrid.classList.toggle('hidden', shown === 0);
+    homeResultsLabel.textContent = 'نتائج البحث عن «' + state.homeQuery.trim() + '» — ' + shown + ' صنف';
+  }
+
+  /* ---------- بحث القسم ---------- */
+  function applyCatFilter() {
+    const q = normalize(state.catQuery);
+    clearCat.classList.toggle('hidden', state.catQuery.length === 0);
+
+    let shown = 0;
+    catGrid.querySelectorAll('.product').forEach(function (card) {
+      const hit = !q || card.dataset.search.indexOf(q) !== -1;
+      card.hidden = !hit;
+      if (hit) shown++;
+    });
+
+    catEmpty.classList.toggle('hidden', shown !== 0);
+    catGrid.classList.toggle('hidden', shown === 0);
+    catCount.textContent = q
+      ? 'نتائج البحث: ' + shown + ' صنف'
+      : countIn(state.catId) + ' صنف في هذا القسم · أسعار استرشادية';
+  }
+
+  /* ---------- صفحة القسم ---------- */
+  function renderCategoryView(id) {
+    const cat = catById(id);
+    const catId = cat ? cat.id : 'all';
+    state.catId = catId;
+    state.catQuery = '';
+    searchCat.value = '';
+    clearCat.classList.add('hidden');
+
+    const label = labelOf(catId);
+    const banner = document.getElementById('cat-banner');
+    banner.src = cat ? cat.img : HERO_IMG;
+    banner.alt = label;
+    document.getElementById('cat-title').textContent = label;
+    document.getElementById('cat-crumb').textContent = label;
+    document.getElementById('cat-meta').textContent =
+      (cat ? cat.note : 'كل أصناف المتجر') + ' · ' + countIn(catId) + ' صنف · أسعار استرشادية';
+
+    const list = catId === 'all' ? PRODUCTS : PRODUCTS.filter(function (p) { return p.cat === catId; });
+    catGrid.innerHTML = list.map(function (p, i) { return cardHTML(p, i); }).join('');
+    catGrid.classList.remove('hidden');
+    catEmpty.classList.add('hidden');
+    catCount.textContent = list.length + ' صنف في هذا القسم · أسعار استرشادية';
+
+    const index = NAV_ORDER.indexOf(catId);
+    const prev = index > 0 ? NAV_ORDER[index - 1] : null;
+    const next = index > -1 && index < NAV_ORDER.length - 1 ? NAV_ORDER[index + 1] : null;
+
+    prevBtn.disabled = !prev;
+    nextBtn.disabled = !next;
+    prevBtn.dataset.target = prev || '';
+    nextBtn.dataset.target = next || '';
+    prevBtn.title = prev ? 'السابق: ' + labelOf(prev) : '';
+    nextBtn.title = next ? 'التالي: ' + labelOf(next) : '';
+
+    syncTabs(catId);
+    scrollTabIntoView(chips.querySelector('[data-target="' + catId + '"]'));
+    document.title = label + ' | A-market';
+  }
+
+  /* ---------- التنقل ---------- */
+  function instantTop() {
+    const root = document.documentElement;
+    const previous = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = previous;
+  }
+
+  function route() {
+    const raw = location.hash.replace(/^#\/?/, '');
+    const isCategory = raw.indexOf('c/') === 0;
+    const id = isCategory ? (raw.slice(2) || 'all') : null;
+
+    if (isCategory) {
+      hero.classList.add('hidden');
+      viewHome.classList.add('hidden');
+      viewCat.classList.remove('hidden');
+      renderCategoryView(id);
+    } else {
+      viewCat.classList.add('hidden');
+      viewHome.classList.remove('hidden');
+      hero.classList.remove('hidden');
+      syncTabs(null);
+      document.title = 'A-market | المنيو الإلكتروني — سوبر ماركت وتجزئة';
+    }
+    instantTop();
+    syncCartUI();
+  }
+
+  function goTo(id) {
+    const target = '#/c/' + id;
+    if (location.hash === target) {
+      instantTop();
+      return;
+    }
+    location.hash = target;
+  }
+
+  /* ---------- الأحداث ---------- */
+  chips.addEventListener('click', function (e) {
+    const tab = e.target.closest('.cat-tab');
+    if (tab) goTo(tab.dataset.target);
+  });
+
+  prevBtn.addEventListener('click', function () {
+    if (prevBtn.dataset.target) goTo(prevBtn.dataset.target);
+  });
+
+  nextBtn.addEventListener('click', function () {
+    if (nextBtn.dataset.target) goTo(nextBtn.dataset.target);
+  });
+
+  searchHome.addEventListener('input', function () {
+    state.homeQuery = searchHome.value;
+    applyHomeFilter();
+  });
+
+  clearHome.addEventListener('click', function () {
+    searchHome.value = '';
+    state.homeQuery = '';
+    applyHomeFilter();
+    searchHome.focus();
+  });
+
+  document.getElementById('home-reset').addEventListener('click', function () {
+    searchHome.value = '';
+    state.homeQuery = '';
+    applyHomeFilter();
+    document.getElementById('home-browse').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  searchCat.addEventListener('input', function () {
+    state.catQuery = searchCat.value;
+    applyCatFilter();
+  });
+
+  clearCat.addEventListener('click', function () {
+    searchCat.value = '';
+    state.catQuery = '';
+    applyCatFilter();
+    searchCat.focus();
+  });
+
+  document.getElementById('cat-reset').addEventListener('click', function () {
+    searchCat.value = '';
+    state.catQuery = '';
+    applyCatFilter();
+  });
+
+  searchCat.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      searchCat.value = '';
+      state.catQuery = '';
+      applyCatFilter();
+    }
+  });
+
+  window.addEventListener('hashchange', route);
+
+  /* ============================================================
+     السلة
+     ============================================================ */
+  const cart = new Map();
+
+  const cartOverlay = document.getElementById('cart-overlay');
+  const cartPanel = document.getElementById('cart-panel');
+  const cartItems = document.getElementById('cart-items');
+  const cartBadge = document.getElementById('cart-badge');
+  const cartBar = document.getElementById('cart-bar');
+  const cartSpace = document.getElementById('cart-space');
+  const cartWa = document.getElementById('cart-wa');
+  const cartTotalEl = document.getElementById('cart-total');
+  const cartLinesEl = document.getElementById('cart-lines');
+  const cartChip = document.getElementById('cart-count-chip');
+  const cartClear = document.getElementById('cart-clear');
+
+  function productByCode(code) {
+    return PRODUCTS.filter(function (p) { return p.code === code; })[0] || null;
+  }
+
+  function cartLines() {
+    const lines = [];
+    cart.forEach(function (qty, code) {
+      const p = productByCode(code);
+      if (p && qty > 0) lines.push({ product: p, qty: qty });
+    });
+    return lines;
+  }
+
+  function cartTotals() {
+    const lines = cartLines();
+    return {
+      lines: lines,
+      count: lines.reduce(function (sum, l) { return sum + l.qty; }, 0),
+      total: lines.reduce(function (sum, l) { return sum + l.qty * l.product.price; }, 0)
+    };
+  }
+
+  function cartMessage(lines, count, total) {
+    return 'مرحباً A-market 👋\n' +
+      'أرغب في تأكيد الطلب التالي من منيو فرع العاشر من رمضان:\n\n' +
+      lines.map(function (l, i) {
+        return (i + 1) + ') ' + l.product.name + ' (' + l.product.code + ') — ' +
+          l.qty + ' × ' + l.product.price + ' = ' + (l.qty * l.product.price) + ' ج.م';
+      }).join('\n') +
+      '\n\n🧾 عدد الأصناف: ' + count +
+      '\n💰 الإجمالي: ' + total + ' ج.م' +
+      '\n\nمن فضلكم أكّدوا التوفر وموعد التوصيل. شكراً!';
+  }
+
+  function lineHTML(line) {
+    const p = line.product;
+    const lineTotal = line.qty * p.price;
+    return (
+      '<div class="flex gap-3 border-b border-gray-100 py-3 last:border-0" data-code="' + p.code + '">' +
+        '<img src="' + p.img + '" alt="' + p.name + '" class="h-14 w-14 shrink-0 rounded-xl object-cover" />' +
+        '<div class="min-w-0 flex-1">' +
+          '<p class="truncate text-xs font-extrabold text-gray-900">' + p.name + '</p>' +
+          '<p class="mt-0.5 text-[10px] font-semibold text-gray-400">' + p.code + ' · ' + p.pack + ' · ' + p.price + ' ج.م</p>' +
+          '<div class="mt-1.5 flex items-center justify-between gap-2">' +
+            '<div class="flex items-center gap-1.5">' +
+              '<button type="button" class="js-minus grid h-7 w-7 place-items-center rounded-lg border border-gray-200 bg-white text-base font-black leading-none text-gray-600 transition hover:border-brand-200 hover:text-brand-600" aria-label="تقليل الكمية">−</button>' +
+              '<span class="w-6 text-center text-xs font-extrabold text-gray-900">' + line.qty + '</span>' +
+              '<button type="button" class="js-plus grid h-7 w-7 place-items-center rounded-lg bg-brand-600 text-base font-black leading-none text-white transition hover:bg-brand-700" aria-label="زيادة الكمية">+</button>' +
+            '</div>' +
+            '<div class="text-left">' +
+              '<p class="text-xs font-black text-brand-600">' + lineTotal + ' ج.م</p>' +
+              '<button type="button" class="js-remove text-[10px] font-bold text-gray-400 transition hover:text-brand-600">حذف</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  function renderCart() {
+    const { lines, count, total } = cartTotals();
+
+    cartBadge.textContent = count;
+    cartBadge.classList.toggle('hidden', count === 0);
+    cartChip.textContent = count + ' صنف';
+    cartLinesEl.textContent = count;
+    cartTotalEl.textContent = total;
+    document.getElementById('bar-count').textContent = count;
+    document.getElementById('bar-total').textContent = total;
+    cartBar.classList.toggle('translate-y-full', count === 0);
+    cartSpace.style.height = count > 0 ? '84px' : '0px';
+    cartClear.classList.toggle('hidden', count === 0);
+    cartWa.classList.toggle('pointer-events-none', count === 0);
+    cartWa.classList.toggle('opacity-50', count === 0);
+    cartWa.href = count === 0 ? '#' : whatsappLink(cartMessage(lines, count, total));
+
+    cartItems.innerHTML = count === 0
+      ? '<div class="py-14 text-center"><span class="text-3xl">🛒</span><p class="mt-2 text-sm font-extrabold text-gray-900">السلة فاضية</p><p class="mt-1 text-xs text-gray-500">ضيف أصناف من المنيو وهتظهر هنا مع الإجمالي.</p></div>'
+      : lines.map(lineHTML).join('');
+  }
+
+  function syncCartUI() {
+    document.querySelectorAll('.product').forEach(function (card) {
+      const qty = cart.get(card.dataset.code) || 0;
+      const emptyBox = card.querySelector('[data-cart-empty]');
+      const inBox = card.querySelector('[data-cart-in]');
+      const qtyEl = card.querySelector('[data-qty]');
+      if (!emptyBox || !inBox) return;
+      emptyBox.classList.toggle('hidden', qty > 0);
+      inBox.classList.toggle('hidden', qty === 0);
+      inBox.classList.toggle('flex', qty > 0);
+      if (qtyEl) qtyEl.textContent = qty;
+    });
+    renderCart();
+  }
+
+  function changeQty(code, delta) {
+    const next = (cart.get(code) || 0) + delta;
+    if (next <= 0) cart.delete(code);
+    else cart.set(code, next);
+    syncCartUI();
+  }
+
+  function openCart() {
+    cartOverlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCart() {
+    cartOverlay.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  /* ---------- أحداث السلة ---------- */
+  document.addEventListener('click', function (e) {
+    const button = e.target.closest('.js-add, .js-plus, .js-minus, .js-remove');
+    if (!button) return;
+    const holder = button.closest('[data-code]');
+    if (!holder) return;
+    const code = holder.dataset.code;
+
+    if (button.classList.contains('js-add')) changeQty(code, 1);
+    else if (button.classList.contains('js-plus')) changeQty(code, 1);
+    else if (button.classList.contains('js-minus')) changeQty(code, -1);
+    else if (button.classList.contains('js-remove')) {
+      cart.delete(code);
+      syncCartUI();
+    }
+  });
+
+  document.getElementById('cart-open').addEventListener('click', openCart);
+  document.getElementById('bar-open').addEventListener('click', openCart);
+  document.getElementById('cart-close').addEventListener('click', closeCart);
+  document.getElementById('cart-backdrop').addEventListener('click', closeCart);
+  cartClear.addEventListener('click', function () {
+    cart.clear();
+    syncCartUI();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !cartOverlay.classList.contains('hidden')) closeCart();
+  });
+
+  /* ---------- ارتفاع الهيدر للشريط الثابت ---------- */
+  function syncHeaderHeight() {
+    const header = document.querySelector('header');
+    if (header) document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+  }
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight);
+  window.addEventListener('load', syncHeaderHeight);
+
+  /* ---------- التهيئة ---------- */
+  const generalLink = whatsappLink(generalMessage);
+  ['header-wa', 'hero-wa', 'footer-wa'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) el.href = generalLink;
+  });
+
+  heroCount.textContent = PRODUCTS.length;
+  heroCats.textContent = CATEGORIES.length;
+  renderCategoryGrid();
+  renderTabs();
+  homeResultsGrid.innerHTML = PRODUCTS.map(function (p, i) { return cardHTML(p, i); }).join('');
+  route();
+</script>
 </body>
 </html>
